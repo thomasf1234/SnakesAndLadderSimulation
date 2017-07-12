@@ -1,0 +1,14 @@
+.idea/
+.project
+.vagrant/
+.bundle/
+build/
+public/
+vendor/
+log/*
+vagrant/base_boxes/
+.DS_Store
+*/.DS_Store
+*id_rsa
+artifacts/
+puppetlabs-release.tgz

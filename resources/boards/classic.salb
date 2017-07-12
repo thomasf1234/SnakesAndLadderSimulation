@@ -1,0 +1,23 @@
+#source https://www.shutterstock.com/image-vector/snakes-ladders-board-game-start-finish-163384724
+scale 10
+
+ladder 1 38
+ladder 4 14
+ladder 9 31
+ladder 28 84
+ladder 21 42
+ladder 51 67
+ladder 72 91
+ladder 80 99
+
+snake 17 7
+snake 54 34
+snake 62 19
+snake 64 60
+snake 87 36
+snake 93 73
+snake 95 75
+snake 98 79
+
+prize 42 £50
+prize 83 £100
