@@ -1,10 +1,10 @@
 namespace :game do
   desc "start a game"
-  #rake game:start['Jimmy John Frankie',classic]
+  # bundle exec rake game:start['Jimmy John Frankie',classic]
   task :start, [:player_names, :board_name] do |t, args|
     board_path = File.join("resources/boards", args[:board_name])
     board = BoardBuilder.new.build(board_path)
-    dice = Dice.new
+    dice = Dice.new(true)
     player_names = args[:player_names].strip.split(/ +/).map(&:strip)
     players = player_names.map { |player_name| Player.new(player_name, board) }
     game = Game.new(players, board, dice)
@@ -15,12 +15,18 @@ namespace :game do
     puts "Congratulations! #{won_player.name} won! and the crowd goes wild! :)"
   end
 
-  task :replay, [:file_path] do |t, args|
+  # bundle exec rake game:replay['resources/replays/test_replay.csv']
+  task :replay, [:file_path,] do |t, args|
     board = BoardBuilder.new.build
     dice = Dice.new(true)
-    player_names = ["John"]
-    players = player_names.map { |player_name| Player.new(player_name, board) }
-    game = Game.new(players, board, dice)
+    dice_map = {'Liverpool v Everton' => 6,
+                'Man Utd v Man City' => 5,
+                'Arsenal v Chelsea' => 4,
+                'Aston Villa v WBA' => 3,
+                'Leeds v Sheffield Wednesday' => 2,
+                'Swansea v Cardiff' => 1}
+    player = Player.new("John", board, dice_map)
+    game = Game.new([player], board, dice)
     game.replay(args[:file_path])
   end
 

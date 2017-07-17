@@ -1,10 +1,11 @@
 class Player
-  attr_reader :name, :position, :prizes
+  attr_reader :name, :position, :prizes, :dice_map
 
-  def initialize(name, board)
+  def initialize(name, board, dice_map={})
     @name = name
     @board = board
     @position = 0
+    @dice_map = dice_map
     @prizes = []
   end
 
@@ -35,14 +36,5 @@ class Player
     end
 
     @position = new_cell.integer
-  end
-
-  def dice_map
-    {'Liverpool v Everton' => 6,
-     'Man Utd v Man City' => 5,
-     'Arsenal v Chelsea' => 4,
-     'Aston Villa v WBA' => 3,
-     'Leeds v Sheffield Wednesday' => 2,
-     'Swansea v Cardiff' => 1}
   end
 end
